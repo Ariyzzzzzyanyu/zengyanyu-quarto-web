@@ -1,0 +1,56 @@
+# This file controls the settings for your Quarto template from www.marvinschmitt.com
+
+# website settings
+website:
+  title: "Zengyanyu"                                # Your name
+  description: "I am a student"   # A brief slogan (optional)
+  image: img/my_image.jpg
+  
+  favicon: img/favicon.png
+  
+  # start of the navigation bar at the top of the website
+  navbar:
+    pinned: true
+    logo: /img/logo.png
+    
+    # your sub-pages
+    left:
+      - text: "Homework"
+        href: projects/index.qmd
+      - text: "Labs"
+        href: photography/index.qmd
+    
+    # your social media handles
+  
+  
+
+# Don't touch unless you know what you are doing :) ------------
+  search: 
+    location: navbar
+    type: textbox
+
+project:
+  type: website
+  output-dir: docs
+
+  preview: 
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+execute:
+  freeze: true
+
+format:
+  html:
+    fontsize: 1.1em
+    theme: 
+      - pulse
+      - html/styles.scss
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
