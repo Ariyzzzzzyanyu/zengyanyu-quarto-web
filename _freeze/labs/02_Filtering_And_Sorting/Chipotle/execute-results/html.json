@@ -1,0 +1,12 @@
+{
+  "hash": "b46457ea70990a7a4f7430ec20613d05",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"02_Filtering_&_Sorting -> Chipotle\"\noutput: \n  html_document:\n    toc: FALSE\n---\n\n\n\n\nThis time we are going to pull data directly from the internet.\nSpecial thanks to: https://github.com/justmarkham for sharing the dataset and materials.\n\n### Step 1. Import the necessary libraries\n\n::: {#57d4aab9 .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n```\n:::\n\n\n### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv). \n\n### Step 3. Assign it to a variable called chipo.\n\n::: {#681a52c0 .cell execution_count=2}\n``` {.python .cell-code}\nurl = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'\n\nchipo = pd.read_csv(url, sep = '\\t')\n```\n:::\n\n\n### Step 4. How many products cost more than $10.00?\n\n::: {#a70575c2 .cell execution_count=3}\n``` {.python .cell-code}\n# clean the item_price column and transform it in a float\n# 清理[item_price]列的数据，将其转换成float类型。\n# float(value[1 : -1])表示字符串切片，将第2位至最后一位截取出来，这里作用是将价格最前面的$符号过滤掉，只保留后面的数字。\n# value的取值就是循环取后面[item_price]列的所有值，全部转换成浮点数，保存至prices这个列表里。\nprices = [float(value[1 : -1]) for value in chipo.item_price]\n\n# reassign the column with the cleaned prices\n# 重新将清理过后的数据赋值给[item_price]列。\nchipo.item_price = prices\n\n# delete the duplicates in item_name and quantity\n# 删除掉[item_name]列与[quantity]列中的重复项。\n# 后面跟的item_name、quantity、choice_description表示参考的列名，这里表示一行里这参考的三列都重复就删除这一行。默认参考所有列。\nchipo_filtered = chipo.drop_duplicates(['item_name','quantity','choice_description'])\n\n# chipo_filtered\n\n# select only the products with quantity equals to 1\n# 筛选出数量为1的商品。\nchipo_one_prod = chipo_filtered[chipo_filtered.quantity == 1]\nchipo_one_prod\n\n# 方法一：\n# 使用nunique()获取指定坐轴中不同元素的数量。\n# 这里显示价格大于10的商品的数量。\nchipo_one_prod[chipo_one_prod['item_price']>10].item_name.nunique()\n# 这里显示所有价格大于10的商品，返回一个DataFrame。\nchipo_one_prod[chipo_one_prod['item_price']>10]\n\n\n# 方法二： \n# 直接使用query()函数查询。函数作用是使用布尔表达式来查询DataFrame的列，最后返回的DataFrame类型的查询结果。\n# 这里使用'item_price > 10'这个表达式，最后得到一个[item_price]列的值都大于10的DataFrame。再使用item_name.nunique()获取商品名称并得到名称去重之后的数量。\nchipo.query('item_price > 10').item_name.nunique()\n```\n\n::: {.cell-output .cell-output-display execution_count=3}\n```\n31\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "Chipotle_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
