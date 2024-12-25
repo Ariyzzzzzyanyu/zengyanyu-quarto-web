@@ -59,3 +59,57 @@ chipo_one_prod[chipo_one_prod['item_price']>10]
 # 这里使用'item_price > 10'这个表达式，最后得到一个[item_price]列的值都大于10的DataFrame。再使用item_name.nunique()获取商品名称并得到名称去重之后的数量。
 chipo.query('item_price > 10').item_name.nunique()
 ```
+
+### Step 5. What is the price of each item? 
+###### print a data frame with only two columns item_name and item_price
+```{python}
+# delete the duplicates in item_name and quantity
+# 删除[item_name]与[quantity]中的重复项。
+chipo_filtered = chipo.drop_duplicates(['item_name','quantity'])
+
+# []里的是筛选条件，这里是筛选出[item_name]的值为'Chicken Bowl'，并且[quantity]的值为1的数据。
+chipo[(chipo['item_name'] == 'Chicken Bowl') & (chipo['quantity'] == 1)]
+
+# select only the products with quantity equals to 1
+# 筛选出数量为1的商品。
+chipo_one_prod = chipo_filtered[chipo_filtered.quantity == 1]
+
+# select only the item_name and item_price columns
+# 将[item_name]与[item_price]这两列单独筛选出来。
+price_per_item = chipo_one_prod[['item_name', 'item_price']]
+
+# sort the values from the most to less expensive
+# 按照价格从高到底排列。
+# 使用sort_values()函数进行排序，by表示排序要参考的列，ascending=False表示降序排序，默认升序排序。
+price_per_item.sort_values(by = "item_price", ascending = False).head(20)
+```
+
+### Step 6. Sort by the name of the item
+```{python}
+chipo.item_name.sort_values()
+
+# OR
+
+chipo.sort_values(by = "item_name")
+```
+
+### Step 7. What was the quantity of the most expensive item ordered?
+```{python}
+chipo.sort_values(by = "item_price", ascending = False).head(1)
+```
+
+### Step 8. How many times was a Veggie Salad Bowl ordered?
+```{python}
+chipo_salad = chipo[chipo.item_name == "Veggie Salad Bowl"]
+# chipo_salad = chipo.query('item_name == "Veggie Salad Bowl"')
+
+len(chipo_salad)
+```
+
+### Step 9. How many times did someone order more than one Canned Soda?
+```{python}
+chipo_drink_steak_bowl = chipo[(chipo.item_name == "Canned Soda") & (chipo.quantity > 1)]
+# chipo_drink_steak_bowl = chipo.query('item_name == "Canned Soda" & quantity > 1')
+
+len(chipo_drink_steak_bowl)
+```

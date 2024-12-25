@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -100,6 +100,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 </head>
@@ -194,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../../labs/01_Getting_And_Knowing_Your_Data/Chipotle.html">
- <span class="dropdown-text">Chipotle</span></a>
+ <span class="dropdown-text">Chipotle1</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../labs/01_Getting_And_Knowing_Your_Data/Occupation.html">
@@ -202,11 +208,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../../labs/02_Filtering_And_Sorting/Chipotle.html">
- <span class="dropdown-text">Chipotle</span></a>
+ <span class="dropdown-text">Chipotle2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/02_Filtering_And_Sorting/Euro12.qmd">
+    <a class="dropdown-item" href="../../labs/02_Filtering_And_Sorting/Euro12.html">
  <span class="dropdown-text">Euro12</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/03_Visualization/Chipotle.html">
+ <span class="dropdown-text">Chipotle3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/03_Visualization/Scores.html">
+ <span class="dropdown-text">Scores</span></a>
   </li>  
     </ul>
   </li>
@@ -254,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.</p>
 <section id="step-1.-import-the-necessary-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries">Step 1. Import the necessary libraries</h3>
-<div id="57d4aab9" class="cell" data-execution_count="1">
+<div id="bb53451b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -263,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-chipo." class="level3">
 <h3 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-chipo.">Step 3. Assign it to a variable called chipo.</h3>
-<div id="681a52c0" class="cell" data-execution_count="2">
+<div id="deb73510" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>chipo <span class="op">=</span> pd.read_csv(url, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -271,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-4.-how-many-products-cost-more-than-10.00" class="level3">
 <h3 class="anchored" data-anchor-id="step-4.-how-many-products-cost-more-than-10.00">Step 4. How many products cost more than $10.00?</h3>
-<div id="a70575c2" class="cell" data-execution_count="3">
+<div id="14943eac" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the item_price column and transform it in a float</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 清理[item_price]列的数据，将其转换成float类型。</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># float(value[1 : -1])表示字符串切片，将第2位至最后一位截取出来，这里作用是将价格最前面的$符号过滤掉，只保留后面的数字。</span></span>
@@ -308,6 +322,330 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>chipo.query(<span class="st">'item_price &gt; 10'</span>).item_name.nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>31</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5.-what-is-the-price-of-each-item" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.-what-is-the-price-of-each-item">Step 5. What is the price of each item?</h3>
+<section id="print-a-data-frame-with-only-two-columns-item_name-and-item_price" class="level6">
+<h6 class="anchored" data-anchor-id="print-a-data-frame-with-only-two-columns-item_name-and-item_price">print a data frame with only two columns item_name and item_price</h6>
+<div id="41585e02" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete the duplicates in item_name and quantity</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除[item_name]与[quantity]中的重复项。</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>chipo_filtered <span class="op">=</span> chipo.drop_duplicates([<span class="st">'item_name'</span>,<span class="st">'quantity'</span>])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># []里的是筛选条件，这里是筛选出[item_name]的值为'Chicken Bowl'，并且[quantity]的值为1的数据。</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>chipo[(chipo[<span class="st">'item_name'</span>] <span class="op">==</span> <span class="st">'Chicken Bowl'</span>) <span class="op">&amp;</span> (chipo[<span class="st">'quantity'</span>] <span class="op">==</span> <span class="dv">1</span>)]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># select only the products with quantity equals to 1</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选出数量为1的商品。</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>chipo_one_prod <span class="op">=</span> chipo_filtered[chipo_filtered.quantity <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># select only the item_name and item_price columns</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 将[item_name]与[item_price]这两列单独筛选出来。</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>price_per_item <span class="op">=</span> chipo_one_prod[[<span class="st">'item_name'</span>, <span class="st">'item_price'</span>]]</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the values from the most to less expensive</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照价格从高到底排列。</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用sort_values()函数进行排序，by表示排序要参考的列，ascending=False表示降序排序，默认升序排序。</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>price_per_item.sort_values(by <span class="op">=</span> <span class="st">"item_price"</span>, ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">item_name</th>
+<th data-quarto-table-cell-role="th">item_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">606</td>
+<td>Steak Salad Bowl</td>
+<td>11.89</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1229</td>
+<td>Barbacoa Salad Bowl</td>
+<td>11.89</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1132</td>
+<td>Carnitas Salad Bowl</td>
+<td>11.89</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Steak Burrito</td>
+<td>11.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">168</td>
+<td>Barbacoa Crispy Tacos</td>
+<td>11.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">39</td>
+<td>Barbacoa Bowl</td>
+<td>11.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">738</td>
+<td>Veggie Soft Tacos</td>
+<td>11.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">186</td>
+<td>Veggie Salad Bowl</td>
+<td>11.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">62</td>
+<td>Veggie Bowl</td>
+<td>11.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">57</td>
+<td>Veggie Burrito</td>
+<td>11.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">250</td>
+<td>Chicken Salad</td>
+<td>10.98</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Chicken Bowl</td>
+<td>10.98</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Steak Soft Tacos</td>
+<td>9.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">554</td>
+<td>Carnitas Crispy Tacos</td>
+<td>9.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">237</td>
+<td>Carnitas Soft Tacos</td>
+<td>9.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56</td>
+<td>Barbacoa Soft Tacos</td>
+<td>9.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">92</td>
+<td>Steak Crispy Tacos</td>
+<td>9.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">664</td>
+<td>Steak Salad</td>
+<td>8.99</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Steak Bowl</td>
+<td>8.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3750</td>
+<td>Carnitas Salad</td>
+<td>8.99</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-6.-sort-by-the-name-of-the-item" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.-sort-by-the-name-of-the-item">Step 6. Sort by the name of the item</h3>
+<div id="97157287" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>chipo.item_name.sort_values()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>chipo.sort_values(by <span class="op">=</span> <span class="st">"item_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">order_id</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">item_name</th>
+<th data-quarto-table-cell-role="th">choice_description</th>
+<th data-quarto-table-cell-role="th">item_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3389</td>
+<td>1360</td>
+<td>2</td>
+<td>6 Pack Soft Drink</td>
+<td>[Diet Coke]</td>
+<td>12.98</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">341</td>
+<td>148</td>
+<td>1</td>
+<td>6 Pack Soft Drink</td>
+<td>[Diet Coke]</td>
+<td>6.49</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1849</td>
+<td>749</td>
+<td>1</td>
+<td>6 Pack Soft Drink</td>
+<td>[Coke]</td>
+<td>6.49</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1860</td>
+<td>754</td>
+<td>1</td>
+<td>6 Pack Soft Drink</td>
+<td>[Diet Coke]</td>
+<td>6.49</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2713</td>
+<td>1076</td>
+<td>1</td>
+<td>6 Pack Soft Drink</td>
+<td>[Coke]</td>
+<td>6.49</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2384</td>
+<td>948</td>
+<td>1</td>
+<td>Veggie Soft Tacos</td>
+<td>[Roasted Chili Corn Salsa, [Fajita Vegetables,...</td>
+<td>8.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">781</td>
+<td>322</td>
+<td>1</td>
+<td>Veggie Soft Tacos</td>
+<td>[Fresh Tomato Salsa, [Black Beans, Cheese, Sou...</td>
+<td>8.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2851</td>
+<td>1132</td>
+<td>1</td>
+<td>Veggie Soft Tacos</td>
+<td>[Roasted Chili Corn Salsa (Medium), [Black Bea...</td>
+<td>8.49</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1699</td>
+<td>688</td>
+<td>1</td>
+<td>Veggie Soft Tacos</td>
+<td>[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...</td>
+<td>11.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1395</td>
+<td>567</td>
+<td>1</td>
+<td>Veggie Soft Tacos</td>
+<td>[Fresh Tomato Salsa (Mild), [Pinto Beans, Rice...</td>
+<td>8.49</td>
+</tr>
+</tbody>
+</table>
+
+<p>4622 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7.-what-was-the-quantity-of-the-most-expensive-item-ordered" class="level3">
+<h3 class="anchored" data-anchor-id="step-7.-what-was-the-quantity-of-the-most-expensive-item-ordered">Step 7. What was the quantity of the most expensive item ordered?</h3>
+<div id="50b76a6b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chipo.sort_values(by <span class="op">=</span> <span class="st">"item_price"</span>, ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">order_id</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">item_name</th>
+<th data-quarto-table-cell-role="th">choice_description</th>
+<th data-quarto-table-cell-role="th">item_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3598</td>
+<td>1443</td>
+<td>15</td>
+<td>Chips and Fresh Tomato Salsa</td>
+<td>NaN</td>
+<td>44.25</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-8.-how-many-times-was-a-veggie-salad-bowl-ordered" class="level3">
+<h3 class="anchored" data-anchor-id="step-8.-how-many-times-was-a-veggie-salad-bowl-ordered">Step 8. How many times was a Veggie Salad Bowl ordered?</h3>
+<div id="0aba68d7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chipo_salad <span class="op">=</span> chipo[chipo.item_name <span class="op">==</span> <span class="st">"Veggie Salad Bowl"</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chipo_salad = chipo.query('item_name == "Veggie Salad Bowl"')</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(chipo_salad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>18</code></pre>
+</div>
+</div>
+</section>
+<section id="step-9.-how-many-times-did-someone-order-more-than-one-canned-soda" class="level3">
+<h3 class="anchored" data-anchor-id="step-9.-how-many-times-did-someone-order-more-than-one-canned-soda">Step 9. How many times did someone order more than one Canned Soda?</h3>
+<div id="c47ca7df" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chipo_drink_steak_bowl <span class="op">=</span> chipo[(chipo.item_name <span class="op">==</span> <span class="st">"Canned Soda"</span>) <span class="op">&amp;</span> (chipo.quantity <span class="op">&gt;</span> <span class="dv">1</span>)]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chipo_drink_steak_bowl = chipo.query('item_name == "Canned Soda" &amp; quantity &gt; 1')</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(chipo_drink_steak_bowl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>20</code></pre>
 </div>
 </div>
 
