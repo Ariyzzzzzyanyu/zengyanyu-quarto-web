@@ -59,6 +59,8 @@ website:
             href: labs/03_Visualization/Chipotle.qmd
           - text: "Scores"
             href: labs/03_Visualization/Scores.qmd
+          - text: "Automated Slides"
+            href: labs/04_Automated_Slides_with_Quarto/Automated_Slides.qmd
         
     
     # your social media handles
